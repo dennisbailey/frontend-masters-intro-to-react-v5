@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "prettier \"src/**/*.{js,html}\" --tab-width 4 --write",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
