@@ -11,6 +11,10 @@ const SearchParams = () => {
     const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
     const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
 
+    // useEffect is called after the first render
+    // It's called if the parameters (animal, setBreed, setBreeds) defined in the second argument have changed
+    // It's called ony once when the second argument is an empty array
+    // It's called when anything updates if the second argument is undefined
     useEffect(() => {
         // Reset
         setBreeds([]);
