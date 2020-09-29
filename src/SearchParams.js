@@ -6,10 +6,21 @@ const SearchParams = () => {
     // Hooks
     const [location, setLocation] = useState("Seattle, WA");
     const [breeds, setBreeds] = useState([]);
+    const [pets, setPets] = useState([]);
 
     // Custom Hooks
     const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
     const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
+
+    async function requestPets() {
+        const { animals } = await pet.animals({
+            location,
+            breed,
+            type: animal,
+        });
+
+        setPets(animals || []);
+    }
 
     // useEffect is called after the first render
     // It's called if the parameters (animal, setBreed, setBreeds) defined in the second argument have changed
@@ -32,7 +43,12 @@ const SearchParams = () => {
 
     return (
         <div className="search-params">
-            <form>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    requestPets();
+                }}
+            >
                 <label htmlFor="location">
                     Location
                     <input
