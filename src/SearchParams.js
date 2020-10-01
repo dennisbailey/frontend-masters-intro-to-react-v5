@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import Results from "./Results.js";
 import useDropdown from "./useDropdown.js";
+import ThemeContext from "./ThemeContext";
 
 const SearchParams = () => {
     // Hooks
     const [location, setLocation] = useState("Seattle, WA");
     const [breeds, setBreeds] = useState([]);
     const [pets, setPets] = useState([]);
+    const [theme] = useContext(ThemeContext);
 
     // Custom Hooks
     const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
@@ -61,7 +63,7 @@ const SearchParams = () => {
                 </label>
                 <AnimalDropdown />
                 <BreedDropdown />
-                <button>Submit</button>
+                <button style={{ backgroundColor: theme }}>Submit</button>
             </form>
             <Results pets={pets} />
         </div>
