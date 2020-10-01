@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 
 class ErrorBoundary extends Component {
-    state = { hasError: false };
+    state = { hasError: false, redirect: false };
 
     static getDerivedStateFromError() {
         return { hasError: true };
@@ -14,8 +14,20 @@ class ErrorBoundary extends Component {
         console.error("Error Boundary caught an error", error, info);
     }
 
+    componentDidUpdate() {
+        const { hasError } = this.state;
+        if (hasError) {
+            setTimeout(() => this.setState({ redirect: true }), 5000);
+        }
+    }
+
     render() {
-        if (this.state.hasError) {
+        const { hasError, redirect } = this.state;
+
+        if (redirect) {
+            return <Redirect to="/" />;
+        }
+        if (hasError) {
             return (
                 <h1>
                     There was an error with this listing.{" "}
