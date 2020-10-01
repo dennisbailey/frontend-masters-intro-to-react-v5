@@ -2,13 +2,16 @@ import React from "react";
 import pet from "@frontendmasters/pet";
 
 class Details extends React.Component {
-    constructor(props) {
-        super(props);
+    state = {
+        loading: true,
+    };
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            loading: true,
-        };
-    }
+    //     this.state = {
+    //         loading: true,
+    //     };
+    // }
 
     // Runs once when the component mounts
     componentDidMount() {
@@ -34,10 +37,10 @@ class Details extends React.Component {
         return (
             <div className="details">
                 <div>
-                    <h1>{name}</h1>
-                    <h2>{`${animal} - ${breed} - ${location}`}</h2>
-                    <button>Adopt {name}</button>
-                    <p>{description}</p>
+                    <h1> {name} </h1>
+                    <h2> {`${animal} - ${breed} - ${location}`} </h2>
+                    <button> Adopt {name} </button>
+                    <p> {description} </p>
                 </div>
             </div>
         );
