@@ -5,13 +5,6 @@ class Details extends React.Component {
     state = {
         loading: true,
     };
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         loading: true,
-    //     };
-    // }
 
     // Runs once when the component mounts
     componentDidMount() {
