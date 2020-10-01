@@ -12,13 +12,22 @@ class Details extends Component {
     // Runs once when the component mounts
     componentDidMount() {
         pet.animal(this.props.id).then(({ animal }) => {
+            const {
+                name,
+                type,
+                contact,
+                description,
+                photos,
+                breeds,
+                url,
+            } = animal;
             this.setState({
-                name: animal.name,
-                animal: animal.type,
-                location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
-                description: animal.description,
-                media: animal.photos,
-                breed: animal.breeds.primary,
+                name,
+                animal: type,
+                location: `${contact.address.city}, ${contact.address.state}`,
+                description,
+                media: photos,
+                breed: breeds.primary,
                 loading: false,
             });
         }, console.error);
